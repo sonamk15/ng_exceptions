@@ -1,9 +1,9 @@
 """Beautiful and helpful exceptions
 
-Just set your `BETTER_EXCEPTIONS` environment variable. It handles the rest.
+Just set your `ng_exceptions` environment variable. It handles the rest.
 
 
-   Name: better_exceptions
+   Name: ng_exceptions
  Author: Josh Junon
   Email: josh@junon.me
     URL: github.com/qix-/better-exceptions
@@ -22,6 +22,7 @@ from .context import PY3
 from .color import SUPPORTS_COLOR, SHOULD_ENCODE, STREAM
 from .log import BetExcLogger, patch as patch_logging
 from .repl import interact, get_repl
+from .translate import trans
 
 
 __version__ = '0.2.2'
@@ -51,6 +52,7 @@ def format_exception(exc, value, tb):
 
 def excepthook(exc, value, tb):
     formatted = u''.join(format_exception(exc, value, tb))
+    formatted=trans(formatted)
     write_stream(formatted, STREAM)
 
 
@@ -61,6 +63,6 @@ def hook():
     patch_logging()
 
     if hasattr(sys, 'ps1'):
-        print('WARNING: better_exceptions will only inspect code from the command line\n'
-              '         when using: `python -m better_exceptions\'. Otherwise, only code\n'
+        print('WARNING: ng_exceptions will only inspect code from the command line\n'
+              '         when using: `python -m ng_exceptions\'. Otherwise, only code\n'
               '         loaded from files will be inspected!', file=sys.stderr)

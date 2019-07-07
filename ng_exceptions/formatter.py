@@ -279,7 +279,6 @@ class ExceptionFormatter(object):
             tb = tb.tb_next
 
         lines = traceback.format_list(frames)
-
         return ''.join(lines), final_source
 
     def _format_exception(self, value, tb, seen=None):
@@ -307,7 +306,6 @@ class ExceptionFormatter(object):
             yield u'Traceback (most recent call last):\n'
 
         formatted, colored_source = self.format_traceback(exc_traceback)
-
         yield formatted
 
         if not str(value) and exc_type is AssertionError:

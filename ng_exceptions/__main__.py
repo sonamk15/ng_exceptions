@@ -12,16 +12,17 @@ try:
         loader.exec_module(mod)
 
 except ImportError:
+
     import imp
 
     def load_module(name, filepath):
         with open(filepath, 'r') as fd:
             imp.load_module('a_b', fd, filepath, ('.py', 'U', imp.PY_SOURCE))
 
-from better_exceptions import interact, hook
+from ng_exceptions import interact, hook
 hook()
 
-parser = argparse.ArgumentParser(description='A Python REPL with better exceptions enabled', prog='python -m better_exceptions')
+parser = argparse.ArgumentParser(description='A Python REPL with better exceptions enabled', prog='python -m ng_exceptions')
 parser.add_argument('-q', '--quiet', help="don't show a banner", action='store_true')
 parser.add_argument('-i', '--no-init', dest='no_init', help="don't load ~/.pyinit", action='store_true')
 args = parser.parse_args()

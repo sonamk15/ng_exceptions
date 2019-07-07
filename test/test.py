@@ -1,5 +1,5 @@
-import better_exceptions
-better_exceptions.hook()
+import ng_exceptions
+ng_exceptions.hook()
 
 foo = 52
 

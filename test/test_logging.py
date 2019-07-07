@@ -1,7 +1,7 @@
-import better_exceptions
+import ng_exceptions
 import logging
 
-better_exceptions.hook()
+ng_exceptions.hook()
 logging.basicConfig()
 
 logger = logging.getLogger(__name__)
